@@ -1,7 +1,7 @@
 import os
 import csv
 bank_csv = os.path.join("/Users/danbishop/Desktop/Rutgers Data Science Bootcamp/RU-JER-DATA-PT-10-2019-U-C/Homework/03-Python Homework/PyBank", 'Resources', 'budget_data.csv')
-#Variables
+#Establish variables
 total_months = 0
 net_profit = 0
 changes = []
@@ -10,7 +10,7 @@ greatest_incr = 0
 greatest_decr = 0
 
 
-#Working code below
+#Open CSV, run calculations and establish loops for Financial Analysis
 with open(bank_csv, newline= '') as data:
     csvreader = csv.reader(data, delimiter = ',')
     next(csvreader, None)
@@ -43,7 +43,7 @@ with open(bank_csv, newline= '') as data:
     high = max(changes)
     low = min(changes)
     
-
+#Print Summary table
 print("Financial Analysis")
 print("----------------------------")
 print(f"Total Months: {str(total_months)}")
@@ -52,6 +52,7 @@ print(f'Average Change: ${str(avg_change)}')
 print(f'Greatest Increase in Profit: {str(greatest_incmo)} {str(high)}')
 print(f'Greatest Decrease in Profit: {str(greatest_decmo)} {str(low)}')
 
+#Print Summary table to txt file
 output_fin = os.path.join("/Users/danbishop/Desktop/Rutgers Data Science Bootcamp/Python/python-challenge-db/PyBank/", 'PyBank.txt')
 with open(output_fin, 'w',) as PyBank:
     PyBank.write("Financial Analysis\n")

@@ -2,6 +2,7 @@ import os
 import csv
 votescsv = os.path.join("/Users/danbishop/Desktop/","election_data.csv")
 
+#Establish variables for candidate counts
 total_votes = 0
 candidates = []
 Khan_count = 0
@@ -9,6 +10,7 @@ Correy_count = 0
 Li_count = 0
 OTooley_count = 0
 
+#Open CSV, establish loops and run counts
 with open(votescsv, newline= '') as data:
     csvreader = csv.reader(data, delimiter = ',')
     row = next(csvreader)
@@ -22,6 +24,7 @@ with open(votescsv, newline= '') as data:
         elif candidate == prev_candidate:
             candidates.append(candidate)
 
+#Calulating percentages, adding vote counts to each row in printed summary, and determining winner
 with open(votescsv, newline= '') as data:
     csvreader = csv.reader(data, delimiter = ',')
     row = next(csvreader)
@@ -50,6 +53,7 @@ with open(votescsv, newline= '') as data:
     else:
         winningcand == "O'Toole"
 
+#Print results
 candidates = list(dict.fromkeys(candidates))
 print("Election Results")
 print("-------------------------")
@@ -64,6 +68,7 @@ print(f"Winner: {str(winningcand)}")
 print("-------------------------")
 print(candidates)
 
+#Print results to txt file
 output_poll = os.path.join("/Users/danbishop/Desktop/Rutgers Data Science Bootcamp/Python/python-challenge-db/PyPoll/", 'PyPoll.txt')
 with open(output_poll, 'w',) as PyPoll:
     PyPoll.write("Election Results\n")
